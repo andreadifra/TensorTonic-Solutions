@@ -1,9 +1,12 @@
 import pandas as pd
 
-def create_dataframe(data):
+def create_dataframe(data: dict) -> dict:
     """
-    Returns: dict with 'data', 'shape', 'columns'
+    Returns a dictionary with data, shape [rows, columns], and ordered column names.
     """
     df = pd.DataFrame(data)
-    print(df)
-    return {"data" : df.to_dict("list"), "shape": list(df.shape), "columns": list(df.columns)}
+    return {
+        "data": df.to_dict('list'), 
+        "shape": list(df.shape),
+        "columns": df.columns.tolist()
+    }
